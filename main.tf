@@ -7,11 +7,11 @@ import {
 
 
  
-/*resource "azurerm_network_security_group" "testnsg" {
+resource "azurerm_network_security_group" "testnsg" {
   name                = "test-nsg"
   location            = "East US"
   resource_group_name = data.azurerm_resource_group.rgname.name
-}*/
+}
  
 resource "azurerm_network_security_rule" "customrule" {
   name                        = "AllowAnyCustom8080Inbound"
@@ -24,5 +24,5 @@ resource "azurerm_network_security_rule" "customrule" {
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
   resource_group_name         = data.azurerm_resource_group.rgname.name
-  network_security_group_name = data.azurerm_network_security_group.nsgname.id
+  network_security_group_name = azurerm_network_security_group.testnsg.id
 }
