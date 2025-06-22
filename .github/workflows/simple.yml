@@ -62,7 +62,10 @@ jobs:
         tenant-id: ${{ secrets.ARM_TENANT_ID}}
         
      - name: Setup terraform
-       uses: hashicorp/setup-terraform@v3   
+       uses: hashicorp/setup-terraform@v3  
+     - name: Terraform Init
+       id: init
+       run: terraform init -input=false 
      - name: Terraform Apply
        id: apply
        run: terraform apply --auto-approve
