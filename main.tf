@@ -11,6 +11,26 @@ resource "azurerm_network_security_group" "testnsg" {
   name                = "test-nsg"
   location            = "East US"
   resource_group_name = data.azurerm_resource_group.rgname.name
+  security_rule       = [
+            {
+                access                                     = "Allow"
+                description                                = null
+                destination_address_prefix                 = "*"
+                destination_address_prefixes               = []
+                destination_application_security_group_ids = []
+                destination_port_range                     = "8080"
+                destination_port_ranges                    = []
+                direction                                  = "Inbound"
+                name                                       = "AllowAnyCustom8080Inbound"
+                priority                                   = 200
+                protocol                                   = "*"
+                source_address_prefix                      = "*"
+                source_address_prefixes                    = []
+                source_application_security_group_ids      = []
+                source_port_range                          = "*"
+                source_port_ranges                         = []
+            },
+        ]
 }
  
 /*resource "azurerm_network_security_rule" "customrule" {
