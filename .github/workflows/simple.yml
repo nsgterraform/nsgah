@@ -20,7 +20,7 @@ jobs:
      - name: Checkout
        uses: actions/checkout@v4
      - name: Azure CLI script
-       uses: azure/cli@v1
+       uses: azure/login@v1
        with:
         client_id: ${{ secrets.ARM_CLIENT_ID}}
         subscription_id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
@@ -55,7 +55,7 @@ jobs:
      - name: Checkout
        uses: actions/checkout@v4
      - name: Azure CLI script
-       uses: azure/cli@v1
+       uses: azure/login@v1
        with:
         client_id: ${{ secrets.ARM_CLIENT_ID}}
         subscription_id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
