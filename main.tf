@@ -13,7 +13,7 @@ resource "azurerm_network_security_group" "testnsg" {
   resource_group_name = data.azurerm_resource_group.rgname.name
 }
  
-resource "azurerm_network_security_rule" "customrule" {
+/*resource "azurerm_network_security_rule" "customrule" {
   name                        = "AllowAnyCustom8080Inbound"
   priority                    = 200
   direction                   = "Inbound"
@@ -25,4 +25,4 @@ resource "azurerm_network_security_rule" "customrule" {
   destination_address_prefix  = "*"
   resource_group_name         = data.azurerm_resource_group.rgname.name
   network_security_group_name = azurerm_network_security_group.testnsg.id
-}
+}*/
