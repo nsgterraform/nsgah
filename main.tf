@@ -52,7 +52,7 @@ resource "azurerm_network_security_group" "testnsg" {
 }
  
 resource "azurerm_network_security_rule" "customrule" {
-  name                        = "AllowAnyCustom8080Inbound"
+  name                        = "Allow500"
   priority                    = 500
   direction                   = "Inbound"
   access                      = "Allow"
