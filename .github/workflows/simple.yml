@@ -10,6 +10,7 @@ jobs:
    testingjob:
     runs-on: ubuntu-latest
     environment: dev
+    
     defaults:
       run:
        shell: bash
@@ -23,6 +24,7 @@ jobs:
         client_id: "{{ secrets.ARM_CLIENT_ID}}"
         subscription_id: "{{ secrets.ARM_SUBSCRIPTION_ID }}"
         tenant_id: "{{ secrets.ARM_TENANT_ID}}"
+        ARM_USE_OIDC: true
      - name: Setup terraform
        uses: hashicorp/setup-terraform@v3
      - name: Terraform fmt
@@ -54,6 +56,7 @@ jobs:
         client_id: "{{ secrets.ARM_CLIENT_ID}}"
         subscription_id: "{{ secrets.ARM_SUBSCRIPTION_ID }}"
         tenant_id: "{{ secrets.ARM_TENANT_ID}}"
+        ARM_USE_OIDC: true
      - name: Setup terraform
        uses: hashicorp/setup-terraform@v3   
      - name: Terraform Apply
