@@ -62,5 +62,5 @@ resource "azurerm_network_security_rule" "customrule" {
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
   resource_group_name         = data.azurerm_resource_group.rgname.name
-  network_security_group_name = azurerm_network_security_group.testnsg.id
+  network_security_group_name = azurerm_network_security_group.testnsg.name
 }
