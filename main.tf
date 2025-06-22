@@ -1,12 +1,8 @@
 import {
 
-  to = azurerm_network_security_group.testnsg
+  to = azurerm_network_security_group.testnsga
   id = "/subscriptions/192c8ca3-9a0e-45a3-acf7-e131e5856927/resourceGroups/nsgtest/providers/Microsoft.Network/networkSecurityGroups/test-nsg1"
 }
-
-
-
- 
 resource "azurerm_network_security_group" "testnsga" {
   name                = "test-nsg1"
   location            = "East US"
