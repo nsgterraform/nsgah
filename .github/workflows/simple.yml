@@ -1,15 +1,16 @@
 name: "testing simple yaml workflow"
 on:
     workflow_dispatch
-permissions:
-    id-token: write
-    contents: read
+
 
 
 jobs:
    testingjob:
     runs-on: ubuntu-latest
     environment: dev
+    permissions:
+     id-token: write
+     contents: read 
     
     defaults:
       run:
@@ -24,7 +25,7 @@ jobs:
         client_id: ${{ secrets.ARM_CLIENT_ID}}
         subscription_id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
         tenant_id: ${{ secrets.ARM_TENANT_ID}}
-        ARM_USE_OIDC: true
+       
      - name: Setup terraform
        uses: hashicorp/setup-terraform@v3
      - name: Terraform fmt
@@ -43,6 +44,9 @@ jobs:
     needs: testingjob
     runs-on: ubuntu-latest
     environment: dev
+    permissions:
+     id-token: write
+     contents: read
     defaults:
       run:
        shell: bash
@@ -56,7 +60,7 @@ jobs:
         client_id: ${{ secrets.ARM_CLIENT_ID}}
         subscription_id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
         tenant_id: ${{ secrets.ARM_TENANT_ID}}
-        ARM_USE_OIDC: true
+        
      - name: Setup terraform
        uses: hashicorp/setup-terraform@v3   
      - name: Terraform Apply
