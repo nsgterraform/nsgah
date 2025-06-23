@@ -10,4 +10,15 @@ security_rules = [
       source_address_prefix        = "*"
       destination_address_prefix   = "*"
     },
+     {
+      name                         = "AllowSSH"
+      priority                     = 530
+      direction                    = "Inbound"
+      access                       = "Allow"
+      protocol                     = "Tcp"
+      source_port_range            = "120,30,40"
+      destination_port_range       = "99,22,50"
+      source_address_prefix        = "192.168.20.0/24,192.168.30.0/24"
+      destination_address_prefix   = "192.168.40.0/24,192.16850.0/24"
+    },
 ]
