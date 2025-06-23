@@ -8,5 +8,6 @@ security_rules = [
       source_port_range            = "*"
       destination_port_range       = "*"
       source_address_prefix        = "*"
+      destination_address_prefixes  = ["*"]
     },
 ]
