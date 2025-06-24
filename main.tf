@@ -72,7 +72,7 @@ import {
 resource "azurerm_network_security_group" "nsgivor" {
   name                = "test-nsg4"
   location            = "East US"
-  resource_group_name = data.azurerm_resource_group.rgname
+  resource_group_name = data.azurerm_resource_group.rgname.name
 
   dynamic "security_rule" {
     for_each = var.nsgsecurity_rules
