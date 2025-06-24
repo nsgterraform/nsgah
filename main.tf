@@ -34,6 +34,7 @@ resource "azurerm_network_security_group" "nsgimp" {
   name                = "test-nsg2"
   location            = "East US"
   resource_group_name = data.azurerm_resource_group.rgname.name
+  tags = local.nsgtags
   dynamic "security_rule" {
     for_each = var.security_rules
     content {
@@ -54,4 +55,10 @@ resource "azurerm_network_security_group" "nsgimp" {
   }
 }
 
-/* resource azure rm*/
+locals {
+  nsgtags = {
+    tagname = "mytag"
+    appid = "ap30"
+    live = "yes"
+  }
+}
