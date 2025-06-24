@@ -67,7 +67,7 @@ locals {
 
 import {
   to = azurerm_network_security_group.nsgivor
-  id = "/subscriptions/192c8ca3-9a0e-45a3-acf7-e131e5856927/resourcegroups/nsgtest/providers/Microsoft.Network/networkSecurityGroups/test-nsg4"
+  id = "/subscriptions/192c8ca3-9a0e-45a3-acf7-e131e5856927/resourceGroups/nsgtest/providers/Microsoft.Network/networkSecurityGroups/test-nsg4"
 }
 resource "azurerm_network_security_group" "nsgivor" {
   name                = "test-nsg4"
