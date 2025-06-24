@@ -62,3 +62,35 @@ locals {
     live = "yes"
   }
 }
+
+/*----------------Using Maps---------------*/
+
+import {
+  to = azurerm_network_security_group.nsgivor
+  id = "/subscriptions/192c8ca3-9a0e-45a3-acf7-e131e5856927/resourcegroups/nsgtest/providers/Microsoft.Network/networkSecurityGroups/test-nsg4"
+}
+resource "azurerm_network_security_group" "nsgivor" {
+  name                = "test-nsg4"
+  location            = "East US"
+  resource_group_name = data.azurerm_resource_group.rgname
+
+  dynamic "security_rule" {
+    for_each = var.nsgsecurity_rules
+
+    content {
+      name                         = security_rule.value.name
+      priority                     = security_rule.value.priority
+      direction                    = security_rule.value.direction
+      access                       = security_rule.value.access
+      protocol                     = security_rule.value.protocol
+      source_port_range            = try(security_rule.value.source_port_range, null)
+      source_port_ranges           = try(security_rule.value.source_port_ranges, null)
+      destination_port_range       = try(security_rule.value.destination_port_range, null)
+      destination_port_ranges      = try(security_rule.value.destination_port_ranges, null)
+      source_address_prefix        = try(security_rule.value.source_address_prefix, null)
+      source_address_prefixes      = try(security_rule.value.source_address_prefixes, null)
+      destination_address_prefix   = try(security_rule.value.destination_address_prefix, null)
+      destination_address_prefixes = try(security_rule.value.destination_address_prefixes, null)
+    }
+  }
+}
