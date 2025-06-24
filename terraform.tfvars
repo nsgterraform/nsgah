@@ -66,7 +66,7 @@ nsgsecurity_rules = {
       protocol                     = "Tcp"
       source_port_range            = "*"
       destination_port_ranges      = ["80","67","90"]
-      source_address_prefixes      = "*"
+      source_address_prefix        = "*"
       destination_address_prefixes   = ["10.0.0.0/24","10.3.0.0/24"]
     }
 }
