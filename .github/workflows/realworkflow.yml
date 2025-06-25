@@ -1,0 +1,60 @@
+name: Testing with github.events
+on:
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: Target Environment
+                required: true
+                default: dev
+                type: choice
+                options:
+                    - dev
+                    - test
+                    - prod
+            action:
+                description: Terraform Plan/Apply
+                required: true
+                default: plan
+                type: choice
+                options:
+                    - plan
+                    - apply
+jobs:
+    terraform:
+        name: terraform ${{github.event.inputs.action}}-${{ github.event.inputs.environment}}
+        runs-on: ubuntu-latest
+        permissions:
+            id-token: write
+            contents: read
+        defaults:
+            run:
+                shell: bash
+        environment: ${{ github.event.action == 'apply' && format('approve-{0}',github.event.inputs.environment) || ''}}   
+        
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: Setup Terraform
+              uses: hashicorp/setup-terraform@v3
+              with:
+               terraform_version: 1.6.6
+            - name: Login to Azure with OIDC
+              uses: azure/login@v2
+              with:
+               client-id: ${{ secrets.ARM_CLIENT_ID }}
+               tenant-id: ${{ secrets.ARM_TENANT_ID }}
+               subscription-id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+            - name: Set up environment variables
+              run: |
+               echo "ENV_NAME=${{github.event.inputs.environment}}" >> GITHUB_ENV
+               echo "ACTION=${{github.event.inputs.action}}" >> GITHUB_ENV
+            - name: terraform init
+              run: terraform init
+            - name: terraform plan
+              if: env.ACTION == 'plan'
+              run: terraform plan
+            - name: terraform apply
+              if: env.ACTION == 'apply'
+              run: terraform apply --auto-approve
+
