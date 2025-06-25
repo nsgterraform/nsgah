@@ -29,7 +29,7 @@ jobs:
         defaults:
             run:
                 shell: bash
-        environment: ${{ github.event.inputs.action == 'apply' && github.event.inputs.environment || ''}}   
+        environment: ${{ github.event.inputs.environment }}   
         
         steps:
             - name: Checkout Code
@@ -48,8 +48,8 @@ jobs:
                
             - name: Set up environment variables
               run: |
-               echo "ENV_NAME=${{github.event.inputs.environment}}" >> GITHUB_ENV
-               echo "ACTION=${{github.event.inputs.action}}" >> GITHUB_ENV
+               echo "ENV_NAME=${{github.event.inputs.environment}}" >> $GITHUB_ENV
+               echo "ACTION=${{github.event.inputs.action}}" >> $GITHUB_ENV
             - name: terraform init
               run: terraform init
             - name: terraform plan
