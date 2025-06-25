@@ -33,3 +33,5 @@ variable "nsgsecurity_rules" {
     destination_address_prefixes = optional(list(string))
   }))
 }
+
+#variable rib_securityrule {}
