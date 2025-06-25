@@ -29,7 +29,7 @@ jobs:
         defaults:
             run:
                 shell: bash
-        environment: ${{ github.event.action == 'apply' && format('approve-{0}',github.event.inputs.environment) || ''}}   
+        environment: ${{ github.event.inputs.action == 'apply' && github.event.inputs.environment || ''}}   
         
         steps:
             - name: Checkout Code
@@ -45,7 +45,7 @@ jobs:
                client-id: ${{ secrets.ARM_CLIENT_ID }}
                tenant-id: ${{ secrets.ARM_TENANT_ID }}
                subscription-id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-               auth-type: IDENTITY
+               
             - name: Set up environment variables
               run: |
                echo "ENV_NAME=${{github.event.inputs.environment}}" >> GITHUB_ENV
