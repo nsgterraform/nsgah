@@ -55,6 +55,10 @@ jobs:
               run: |
                echo "ENV_NAME=${{github.event.inputs.environment}}" >> $GITHUB_ENV
                echo "ACTION=${{github.event.inputs.action}}" >> $GITHUB_ENV
+               echo "ARM_CLIENT_ID=${{ secrets.ARM_CLIENT_ID }}" >> $GITHUB_ENV
+               echo "ARM_TENANT_ID=${{ secrets.ARM_TENANT_ID }}" >> $GITHUB_ENV
+               echo "ARM_SUBSCRIPTION_ID=${{ secrets.ARM_SUBSCRIPTION_ID }}" >> $GITHUB_ENV
+               echo "ARM_USE_OIDC=true" >> $GITHUB_ENV
             - name: terraform init
               run: terraform init
             - name: terraform plan
