@@ -103,12 +103,12 @@ import {
   to = azurerm_network_security_group.nsg_rib
   id = "/subscriptions/192c8ca3-9a0e-45a3-acf7-e131e5856927/resourceGroups/nsgtest/providers/Microsoft.Network/networkSecurityGroups/nsg-rib"
 }
-/*resource "azurerm_network_security_group" "nsg_rib" {
+resource "azurerm_network_security_group" "nsg_rib" {
   name                = "nsg-rib"
   location            = "East US"
   resource_group_name = data.azurerm_resource_group.rgname.name
 
-  dynamic "security_rule" {
+ /* dynamic "security_rule" {
     for_each = var.rib_securityrule
 
     content {
@@ -126,5 +126,5 @@ import {
       destination_address_prefix   = try(security_rule.value.destination_address_prefix, null)
       destination_address_prefixes = try(security_rule.value.destination_address_prefixes, null)
     }
-  }
-}*/
+  }*/
+}
