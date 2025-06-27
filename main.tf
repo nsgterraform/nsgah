@@ -1,11 +1,11 @@
 
 import {
- to = azurerm_network_security_group.nsg_orib
- id = "/subscriptions/192c8ca3-9a0e-45a3-acf7-e131e5856927/resourceGroups/nsgtest/providers/Microsoft.Network/networkSecurityGroups/nsg-orib"
+ to = azurerm_network_security_group.oribnsg
+ id = "/subscriptions/192c8ca3-9a0e-45a3-acf7-e131e5856927/resourceGroups/nsgtest/providers/Microsoft.Network/networkSecurityGroups/oribnsg"
 }
 
-resource "azurerm_network_security_group" "nsg_orib" {
-  name                = "nsg-orib"
+resource "azurerm_network_security_group" "oribnsg" {
+  name                = "oribnsg"
   location            = "East US"
   resource_group_name = data.azurerm_resource_group.rgname.name
 
