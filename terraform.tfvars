@@ -107,4 +107,22 @@ rib_securityrule = [
                 source_port_range                          = "*"
                 source_port_ranges                         = []
             }, 
+            {
+                access                                     = "Allow"
+                description                                = null
+                destination_address_prefix                 = "*"
+                destination_address_prefixes               = []
+                destination_application_security_group_ids = []
+                destination_port_range                     = "8080"
+                destination_port_ranges                    = []
+                direction                                  = "Inbound"
+                name                                       = "AllowAnyCustomInbound"
+                priority                                   = 180
+                protocol                                   = "Tcp"
+                source_address_prefix                      = "*"
+                source_address_prefixes                    = []
+             
+                source_port_range                          = "*"
+                source_port_ranges                         = []
+            }, 
 ]
