@@ -108,7 +108,7 @@ resource "azurerm_network_security_group" "nsg_rib" {
   location            = "East US"
   resource_group_name = data.azurerm_resource_group.rgname.name
 
- /* dynamic "security_rule" {
+  dynamic "security_rule" {
     for_each = var.rib_securityrule
 
     content {
@@ -126,5 +126,5 @@ resource "azurerm_network_security_group" "nsg_rib" {
       destination_address_prefix   = try(security_rule.value.destination_address_prefix, null)
       destination_address_prefixes = try(security_rule.value.destination_address_prefixes, null)
     }
-  }*/
+  }
 }

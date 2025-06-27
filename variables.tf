@@ -34,4 +34,4 @@ variable "nsgsecurity_rules" {
   }))
 }
 
-#variable rib_securityrule {}
+variable rib_securityrule {}

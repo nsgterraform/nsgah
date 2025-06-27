@@ -70,3 +70,41 @@ nsgsecurity_rules = {
       destination_address_prefixes   = ["10.0.0.0/24","10.3.0.0/24"]
     }
 }
+rib_securityrule = [
+   {
+                access                                     = "Allow"
+                description                                = null
+                destination_address_prefix                 = "*"
+                destination_address_prefixes               = []
+                destination_application_security_group_ids = []
+                destination_port_range                     = "80-100"
+                destination_port_ranges                    = []
+                direction                                  = "Inbound"
+                name                                       = "AllowAnyCustom80-100Inbound"
+                priority                                   = 110
+                protocol                                   = "Tcp"
+                source_address_prefix                      = "*"
+                source_address_prefixes                    = []
+               
+                source_port_range                          = "*"
+                source_port_ranges                         = []
+            },
+            {
+                access                                     = "Allow"
+                description                                = null
+                destination_address_prefix                 = "*"
+                destination_address_prefixes               = []
+                destination_application_security_group_ids = []
+                destination_port_range                     = "8080"
+                destination_port_ranges                    = []
+                direction                                  = "Inbound"
+                name                                       = "AllowAnyCustom8080Inbound"
+                priority                                   = 100
+                protocol                                   = "Tcp"
+                source_address_prefix                      = "*"
+                source_address_prefixes                    = []
+             
+                source_port_range                          = "*"
+                source_port_ranges                         = []
+            }, 
+]
