@@ -35,7 +35,9 @@ resource "azurerm_network_security_group" "oribnsg" {
       source_application_security_group_ids      = try(security_rule.value.source_application_security_group_ids, [])
     }
   }
-
+lifecycle {
+    ignore_changes = [security_rule]
+  }
   tags = {}
 }
 
