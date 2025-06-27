@@ -1,4 +1,4 @@
-/*variable "orib_securityrule" {
+variable "orib_securityrule" {
   description = "List of security rules for the NSG"
   type = list(object({
     name                                       = string
@@ -17,4 +17,4 @@
     source_application_security_group_ids      = optional(list(string))
     destination_application_security_group_ids = optional(list(string))
   }))
-}*/
+}

@@ -9,7 +9,7 @@ resource "azurerm_network_security_group" "oribnsg" {
   location            = "East US"
   resource_group_name = data.azurerm_resource_group.rgname.name
 
-  /*dynamic "security_rule" {
+  dynamic "security_rule" {
     for_each = { for rule in var.orib_securityrule : rule.name => rule }
 
     content {
@@ -34,7 +34,7 @@ resource "azurerm_network_security_group" "oribnsg" {
       destination_application_security_group_ids = length(try(security_rule.value.destination_application_security_group_ids, [])) > 0 ? security_rule.value.destination_application_security_group_ids : null
       source_application_security_group_ids      = length(try(security_rule.value.source_application_security_group_ids, [])) > 0 ? security_rule.value.source_application_security_group_ids : null
     }
-  }*/
+  }
 
   tags = {}
 }
