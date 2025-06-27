@@ -20,19 +20,19 @@ resource "azurerm_network_security_group" "oribnsg" {
       protocol                     = security_rule.value.protocol
 
       source_port_range            = try(security_rule.value.source_port_range, null)
-      source_port_ranges           = length(try(security_rule.value.source_port_ranges, [])) > 0 ? security_rule.value.source_port_ranges : null
+      source_port_ranges           = try(length(security_rule.value.source_port_ranges) > 0 ? security_rule.value.source_port_ranges : null, null)
 
       destination_port_range       = try(security_rule.value.destination_port_range, null)
-      destination_port_ranges      = length(try(security_rule.value.destination_port_ranges, [])) > 0 ? security_rule.value.destination_port_ranges : null
+      destination_port_ranges      = try(length(security_rule.value.destination_port_ranges) > 0 ? security_rule.value.destination_port_ranges : null, null)
 
       source_address_prefix        = try(security_rule.value.source_address_prefix, null)
-      source_address_prefixes      = length(try(security_rule.value.source_address_prefixes, [])) > 0 ? security_rule.value.source_address_prefixes : null
+      source_address_prefixes      = try(length(security_rule.value.source_address_prefixes) > 0 ? security_rule.value.source_address_prefixes : null, null)
 
       destination_address_prefix   = try(security_rule.value.destination_address_prefix, null)
-      destination_address_prefixes = length(try(security_rule.value.destination_address_prefixes, [])) > 0 ? security_rule.value.destination_address_prefixes : null
+      destination_address_prefixes = try(length(security_rule.value.destination_address_prefixes) > 0 ? security_rule.value.destination_address_prefixes : null, null)
 
-      destination_application_security_group_ids = length(try(security_rule.value.destination_application_security_group_ids, [])) > 0 ? security_rule.value.destination_application_security_group_ids : null
-      source_application_security_group_ids      = length(try(security_rule.value.source_application_security_group_ids, [])) > 0 ? security_rule.value.source_application_security_group_ids : null
+      destination_application_security_group_ids = try(length(security_rule.value.destination_application_security_group_ids) > 0 ? security_rule.value.destination_application_security_group_ids : null, null)
+      source_application_security_group_ids      = try(length(security_rule.value.source_application_security_group_ids) > 0 ? security_rule.value.source_application_security_group_ids : null, null)
     }
   }
 
