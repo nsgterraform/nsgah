@@ -10,31 +10,32 @@ resource "azurerm_network_security_group" "oribnsg" {
   resource_group_name = data.azurerm_resource_group.rgname.name
 
   dynamic "security_rule" {
-  for_each = { for rule in var.orib_securityrule : rule.name => rule }
+    for_each = { for rule in var.orib_securityrule : rule.name => rule }
 
-  content {
-    name                         = security_rule.value.name
-    priority                     = security_rule.value.priority
-    direction                    = security_rule.value.direction
-    access                       = security_rule.value.access
-    protocol                     = security_rule.value.protocol
+    content {
+      name                         = security_rule.value.name
+      priority                     = security_rule.value.priority
+      direction                    = security_rule.value.direction
+      access                       = security_rule.value.access
+      protocol                     = security_rule.value.protocol
 
-    source_port_range            = lookup(security_rule.value, "source_port_range", null)
-    source_port_ranges           = length(lookup(security_rule.value, "source_port_ranges", [])) > 0 ? security_rule.value.source_port_ranges : null
+      source_port_range            = security_rule.value.source_port_range != null && length(trimspace(security_rule.value.source_port_range)) > 0 ? security_rule.value.source_port_range : null
+      source_port_ranges           = length(security_rule.value.source_port_ranges) > 0 ? security_rule.value.source_port_ranges : null
 
-    destination_port_range       = lookup(security_rule.value, "destination_port_range", null)
-    destination_port_ranges      = length(lookup(security_rule.value, "destination_port_ranges", [])) > 0 ? security_rule.value.destination_port_ranges : null
+      destination_port_range       = security_rule.value.destination_port_range != null && length(trimspace(security_rule.value.destination_port_range)) > 0 ? security_rule.value.destination_port_range : null
+      destination_port_ranges      = length(security_rule.value.destination_port_ranges) > 0 ? security_rule.value.destination_port_ranges : null
 
-    source_address_prefix        = lookup(security_rule.value, "source_address_prefix", null)
-    source_address_prefixes      = length(lookup(security_rule.value, "source_address_prefixes", [])) > 0 ? security_rule.value.source_address_prefixes : null
+      source_address_prefix        = security_rule.value.source_address_prefix != null && length(trimspace(security_rule.value.source_address_prefix)) > 0 ? security_rule.value.source_address_prefix : null
+      source_address_prefixes      = length(security_rule.value.source_address_prefixes) > 0 ? security_rule.value.source_address_prefixes : null
 
-    destination_address_prefix   = lookup(security_rule.value, "destination_address_prefix", null)
-    destination_address_prefixes = length(lookup(security_rule.value, "destination_address_prefixes", [])) > 0 ? security_rule.value.destination_address_prefixes : null
+      destination_address_prefix   = security_rule.value.destination_address_prefix != null && length(trimspace(security_rule.value.destination_address_prefix)) > 0 ? security_rule.value.destination_address_prefix : null
+      destination_address_prefixes = length(security_rule.value.destination_address_prefixes) > 0 ? security_rule.value.destination_address_prefixes : null
 
-    destination_application_security_group_ids = length(lookup(security_rule.value, "destination_application_security_group_ids", [])) > 0 ? security_rule.value.destination_application_security_group_ids : null
-    source_application_security_group_ids      = length(lookup(security_rule.value, "source_application_security_group_ids", [])) > 0 ? security_rule.value.source_application_security_group_ids : null
+      destination_application_security_group_ids = length(security_rule.value.destination_application_security_group_ids) > 0 ? security_rule.value.destination_application_security_group_ids : null
+      source_application_security_group_ids      = length(security_rule.value.source_application_security_group_ids) > 0 ? security_rule.value.source_application_security_group_ids : null
+    }
   }
-}
 
   tags = {}
 }
+
