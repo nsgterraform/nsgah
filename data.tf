@@ -11,5 +11,5 @@ data "azurerm_virtual_network" "vnetfetch" {
 data "azurerm_subnet" "subnetfetch" {
   name                 = "app-subnet"                        # <-- Replace with your Subnet name
   virtual_network_name = data.azurerm_virtual_network.vnetfetch.name
-  resource_group_name  = data.azurerm_virtual_network.subnetfetch.resource_group_name
+  resource_group_name  = data.azurerm_virtual_network.vnetfetch.resource_group_name
 }
