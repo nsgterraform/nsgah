@@ -15,3 +15,4 @@ variable "testnsgrules" {
     destination_address_prefixes = optional(list(string))
   }))
 }
+variable "location" {}
