@@ -1,3 +1,4 @@
+location = "eastus"
 testnsgrules = {
   allow80 = {
      name                        = "allow-ssh"
