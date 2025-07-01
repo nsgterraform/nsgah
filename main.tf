@@ -1,6 +1,6 @@
 resource "azurerm_network_security_group" "indnsg" {
   name                = "testingnsg"
-  location            = data.azurerm_resource_group.rgname.location
+  location            = var.location
   resource_group_name = data.azurerm_resource_group.rgname.name
 }
 
