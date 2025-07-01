@@ -1,6 +1,6 @@
 data "azurerm_resource_group" "rgname" {
   name = "nsgtest"
-  location = "eastus"
+ 
 }
 data "azurerm_virtual_network" "vnetfetch" {
   name                = "vnet-nsg"              # <-- Replace with your VNet name
