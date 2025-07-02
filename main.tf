@@ -43,6 +43,6 @@ module "nsgmodulerules" {
   source = "./Modules/NSGRules"
   depends_on = [ module.nsgmodule ]
   testnsgrules1 = var.testnsgrules1
-  resource_group_name = data.azurerm_resource_group.rgname
+  resource_group_name = data.azurerm_resource_group.rgname.name
   network_security_group_name = module.nsgmodule.nsgid
 }
