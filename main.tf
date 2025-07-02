@@ -32,7 +32,7 @@ resource "azurerm_subnet_network_security_group_association" "example" {
 }*/
 
 module "nsgmodule" {
-  source = "../Modules/NSG"
+  source = "./Modules/NSG"
   testnsgrules = var.testnsgrules
   location = var.location
   resource_group_name = data.azurerm_resource_group.rgname.name
