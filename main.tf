@@ -35,7 +35,7 @@ module "nsgmodule" {
   source = "./Modules/NSG"
   location = var.location
   nsgname = var.nsgname
-  resource_group_name = data.azurerm_resource_group.rgname
+  resource_group_name = data.azurerm_resource_group.rgname.name
 
 
 }
