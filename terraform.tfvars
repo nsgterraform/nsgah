@@ -14,7 +14,7 @@ testnsgrules1 = {
      destination_address_prefix  = "*"
 
   }
-  allow9 = {
+  /*allow9 = {
      name                        = "allow-90ssh"
      priority                    = 120
      direction                   = "Inbound"
@@ -25,9 +25,9 @@ testnsgrules1 = {
      source_address_prefix       = "*"
      destination_address_prefix  = "*"
 
-  }
+  }*/
   allow989 = {
-     name                        = "allow-90ssh"
+     name                        = "allow-90dssh"
      priority                    = 140
      direction                   = "Inbound"
      access                      = "Allow"
