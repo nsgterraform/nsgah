@@ -1,4 +1,4 @@
-resource "azurerm_network_security_group" "indnsg" {
+/*resource "azurerm_network_security_group" "indnsg" {
   name                = "testingnsg"
   location            = var.location
   resource_group_name = data.azurerm_resource_group.rgname.name
@@ -29,4 +29,12 @@ resource "azurerm_network_security_rule" "somensgs" {
 resource "azurerm_subnet_network_security_group_association" "example" {
   subnet_id                 = data.azurerm_subnet.subnetfetch.id
   network_security_group_id = azurerm_network_security_group.indnsg.id
+}*/
+
+module "nsgmodule" {
+  source = "../Modules/NSG"
+  testnsgrules = var.testnsgrules
+  location = var.location
+  resource_group_name = data.azurerm_resource_group.rgname.name
+
 }

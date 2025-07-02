@@ -1,6 +1,6 @@
 location = "eastus"
-testnsgrules = {
-  allow80 = {
+testnsgrules = [
+   {
      name                        = "allow-ssh"
      priority                    = 100
      direction                   = "Inbound"
@@ -11,8 +11,8 @@ testnsgrules = {
      source_address_prefix       = "*"
      destination_address_prefix  = "*"
 
-  }
-  allow800 = {
+  },
+   {
      name                        = "allow-90ssh"
      priority                    = 120
      direction                   = "Inbound"
@@ -23,5 +23,5 @@ testnsgrules = {
      source_address_prefix       = "*"
      destination_address_prefix  = "*"
 
-  }
-}
+  },
+]
