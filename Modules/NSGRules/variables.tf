@@ -15,6 +15,5 @@ variable "testnsgrules1" {
     destination_address_prefixes = optional(list(string))
   }))
 }
-variable "location" {}
-
-variable "nsgname" {}
+variable "resource_group_name" {}
+variable "network_security_group_name" {}
