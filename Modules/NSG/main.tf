@@ -12,7 +12,7 @@ resource "azurerm_subnet_network_security_group_association" "subnetassoc" {
 resource "azurerm_network_security_rule" "example" {
   for_each = {for ir in var.inboundrules : ir.priority => ir}
   name                        = lookup(each.value,"name",null)
-  priority                    = lookup(each.value,each.key)
+  priority                    = lookup(each.value,"priority",each.key)
   direction                   = "Inbound"
   access                      = lookup(each.value,"access","Allow")
   protocol                    = lookup(each.value,"protocol","Tcp")
