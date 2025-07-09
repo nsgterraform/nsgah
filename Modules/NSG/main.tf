@@ -6,7 +6,7 @@ resource "azurerm_network_security_group" "self" {
 resource "azurerm_subnet_network_security_group_association" "subnetassoc" {
   count = length(var.subnetids)
   subnet_id                 = var.subnetids[count.index]
-  network_security_group_id = azurerm_network_security_group.example.id
+  network_security_group_id = azurerm_network_security_group.self.id
 }
 
 resource "azurerm_network_security_rule" "example" {
